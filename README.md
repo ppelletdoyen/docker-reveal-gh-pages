@@ -6,6 +6,5 @@ Demo at https://ppelletdoyen.github.io/docker-reveal-gh-pages
 ## Run with docker
 
 ```
-docker build -t docker-reveal-apache2 .
-docker run -dit --name ocker-reveal-app docker-reveal-apache2
+docker run -dit --name docker-reveal-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
 ```
