@@ -1,49 +1,756 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<style type="text/css">
+		.q-txt-left {
+			text-align: left !important;
+		}
+		.q-ul-width100 {
+			width: 100%;
+		}
+	</style>
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section >
+				<h1>Docker</h1>
+				Pascal PELLET-DOYEN
+				<br> Janvier 2018
+				<br>
+				<img style="border: 0px; box-shadow: none; max-width:150px; background: rgba(0, 0, 0, 0.0);" src="images/qim.png" />
+			</section>
+
+			<section >
+
+				<section >
+					<h1 id="yet-another-why-">Docker</h1>
+					<h3>Historique</h3>
+					<img style="border: 3px solid #828282;" src="images/historique.png" />
+				</section>
+
+				<section >
+
+					<h3>Versioning & Éditions</h3>
+
+					<pre><code>Annee{2}.Mois{2}.Version-Edition{2}</code></pre>
+
+					<p class="q-txt-left">
+						<b>Entreprise Edition</b>
+					</p>
+					<ul class="q-ul-width100">
+						<li>Version chaque trimestre - Support 1 année</li>
+					</ul>
+
+					<p class="q-txt-left">
+						<b>Community Edition</b>
+					</p>
+					<ul class="q-ul-width100">
+						<li>
+							<u>Stable</u> : Version chaque trimestre - Support 4 mois</li>
+						<li>
+							<u>Edge</u> &nbsp&nbsp: Version chaque mois</li>
+					</ul>
+
+				</section>
+
+			</section>
+
+			<section >
+
+				<section >
+
+					<h1>Architecture</h1>
+
+					<img width="750" style="box-shadow: none; border: 3px solid #ffffff;" src="images/architecture_docker.svg" />
+
+				</section>
+
+			</section>
+
+			<section >
+
+				<section >
+
+					<h1>Images</h1>
+
+					<ul>
+						<li>Un système d’image pour facilement transporter une application et ses dépendances :
+							<br/>
+							<b>un super « ZIP »</b>
+							<br />
+							<br />
+						</li>
+					</ul>
+
+					<ul class="q-ul-width100">
+						<li>Equivalence d’une classe en POO</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Où les trouve-t-on ?</h3>
+					<ul>
+						<li>Docker Hub :
+							<a href="http://hub.docker.com">http://hub.docker.com</a>
+						</li>
+						<li>Construire sa propre image</li>
+						<li>Repository d'entreprise / personnel</li>
+					</ul>
+
+				</section>
+
+				<section>
+
+					<h3>Docker Hub</h3>
+					<div style="display: inline-block; vertical-align: top;">
+						<br />
+						<ul>
+							<li>Cloud repository</li>
+							<br />
+							<li>Official repositories</li>
+						</ul>
+					</div>
+					<div style="display: inline-block;">
+						<img style="box-shadow: none; border: 3px solid #828282; float:right;" src="images/repositories_docker.png" />
+						<div>
+
+
+				</section>
+
+				<section >
+
+					<h3>Commandes « image »</h3>
+
+					<div>
+						<div>
+							<pre style="box-shadow: none; border: 0;">
+											<code class="makefile">C:\> docker image
+		Usage:  docker image COMMAND
+		Manage images
+		Options:
+		Commands:
+		 build   Build an image from a Dockerfile
+		 history Show the history of an image
+		 load    Load an image from a tar archive or STDIN
+		 ls      List images
+		 pull    Pull an image or a repository from a registry
+		 push    Push an image or a repository to a registry
+		 rm      Remove one or more images
+		 save    Save one or more images to a tar archive
+		...</code>
+										</pre>
+						</div>
+					</div>
+
+				</section>
+
+			</section>
+
+			<section >
+
+				<section >
+
+					<h1 id="keywords-1">Dockerfile</h1>
+
+					<p>Fichier d’instructions pour la création d’image</p>
+
+				</section>
+
+				<section >
+
+					<h3>Instructions</h3>
+
+					<p class="q-txt-left">
+						<small>
+							<em>
+								<b>Spécifier l’image de base</b>
+							</em>
+						</small>
+					</p>
+					<pre><code>FROM image:version</code></pre>
+
+					<p class="q-txt-left">
+						<small>
+							<em>Déclarer des arguments avec possibilité de valeur par défaut</em>
+						</small>
+					</p>
+					<pre><code>ARG name[=defaultValue]</code></pre>
+
+					<p class="q-txt-left">
+						<small>
+							<em>Exécuter une instruction</em>
+						</small>
+					</p>
+					<pre><code>RUN command</code></pre>
+					<p class="q-txt-left">
+						<small>
+							<em>
+								<b>Exécuter commande au lancement du conteneur</b>
+							</em>
+						</small>
+					</p>
+					<pre><code>CMD command</code></pre>
+					<br />
+					<p>
+						<a href="https://docs.docker.com/engine/reference/builder/">docs.docker.com/engine/reference/builder/</a>
+					</p>
+
+				</section>
+
+				<section >
+
+					<h3>Exemple : Extranet Server</h3>
+
+					<div>
+						<div>
+							<pre style="box-shadow: none; border: 0;">
+											<code class="shell"># Utilisation d'une image comme couche de base
+		FROM php:7.0-apache
+		
+		# Déclaration du répertoire de travail
+		WORKDIR /var/www/html
+		
+		# Installation des dépendances nécessaires
+		RUN docker-php-ext-install mysqli
+		RUN docker-php-ext-enable mysqli</code>
+										</pre>
+						</div>
+					</div>
+
+				</section>
+
+				<section >
+
+					<div>
+						<div>
+							<pre style="box-shadow: none; border: 0;">
+											<code class="makefile">C:\Docker\ExtranetServer> docker image build -t extranetserver .
+		Sending build context to Docker daemon  3.735MB
+		Step 1/4 : FROM php:7.0-apache
+		 ---> c7db7ef72210
+		Step 2/4 : WORKDIR /var/www/html
+		 ---> Using cache
+		 ---> d17b85bc1264
+		Step 3/4 : RUN docker-php-ext-install mysqli
+		 ---> Using cache
+		 ---> 71169e546436
+		Step 4/4 : RUN docker-php-ext-enable mysqli
+		 ---> Using cache
+		 ---> 604672dcec23
+		Successfully built 604672dcec23
+		Successfully tagged extranetserver:latest</code>
+										</pre>
+						</div>
+					</div>
+
+				</section>
+
+			</section>
+
+			<section >
+
+				<section >
+
+					<h1 id="keywords-1">Conteneur</h1>
+
+					<ul>
+						<li>Exécution d’une image (ubuntu, php, microsoft, etc.) avec ou sans paramètres</li>
+					</ul>
+					<br />
+					<br />
+					<ul class="q-ul-width100">
+						<li>Equivalence d’une instance en POO</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Spécificités</h3>
+					<ul>
+						<li>Partage l’OS de la machine hôte</li>
+						<li>Isolé</li>
+						<li>Autonome</li>
+						<li>Ephémère
+							<span style="color: red;">/!\</span>
+							<i> stockage des données </i>
+							<span style="color: red;">/!\</span>
+						</li>
+						<li>Sauvegarde des modifications d’un conteneur</li>
+					</ul>
+					<pre><code>docker conteneur commit &lt;nomDuConteneur&gt; &lt;nomImage[:TAG/VERSION]&gt;</code></pre>
+
+				</section>
+
+				<section >
+
+					<h3>Conteneur
+						<small style="vertical-align: middle;">&nbsp;vs&nbsp;</small> Machine Virt.</h3>
+
+					<p>
+						<img style="box-shadow: none; border: 3px solid #828282;" src="images/conteneur_vs_vm_1.jpg" />
+					</p>
+					<p>
+						<img style="box-shadow: none; border: 3px solid #828282;" src="images/conteneur_vs_vm_2.jpg" />
+					</p>
+
+				</section>
+
+				<section >
+
+					<h3>Conteneur : éphémère</h3>
+					<p>Principe de couches</p>
+					<p>
+						<img style="box-shadow: none; border: 3px solid #828282;" src="images/sharing-layers.jpg" />
+					</p>
+
+				</section>
+
+				<section >
+
+					<h3>Conteneur : léger & rapide</h3>
+					<p>Principe de couches</p>
+					<p>
+						<img style="box-shadow: none; border: 3px solid #828282;" src="images/conteneur_leger.jpg" />
+					</p>
+
+				</section>
+
+				<section >
+
+					<h3>Machine hôte
+						<b>Unix</b>
+					</h3>
+					<br />
+					<ul>
+						<li>Emulation de conteneur Unix
+							<i class="fa fa-arrow-right" aria-hidden="true"></i>
+							<b>Natif</b>
+						</li>
+						<br />
+						<li>Emulation de conteneur Windows
+							<i class="fa fa-arrow-right" aria-hidden="true"></i>
+							<b>VM</b> (à faire manuellement)</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Machine hôte
+						<br />
+						<b>Windows 10</b> /
+						<b>Server 2016</b>
+					</h3>
+					<br />
+					<ul>
+						<li>Emulation de conteneur Unix
+							<i class="fa fa-arrow-right" aria-hidden="true"></i>
+							<b>VM</b>
+						</li>
+						<br />
+						<li>Emulation de conteneur Windows
+							<i class="fa fa-arrow-right" aria-hidden="true"></i>
+							<b>Natif</b>
+						</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Machine hôte
+						<b>Windows 8</b> (et
+						<)</h3>
+							<br />
+							<ul>
+								<li>Emulation de conteneur Unix
+									<i class="fa fa-arrow-right" aria-hidden="true"></i>
+									<b>VM</b>
+								</li>
+								<br />
+								<li>Emulation de conteneur Windows
+									<i class="fa fa-arrow-right" aria-hidden="true"></i>
+									<b>DockerToolbox</b> (VM ?)</li>
+							</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Commandes « container »</h3>
+
+					<div>
+						<div>
+							<pre style="box-shadow: none; border: 0;">
+											<code class="makefile">C:\> docker container
+		Usage:  docker container COMMAND
+		Manage containers
+		Options:
+		Commands:
+		 commit  Create a new image from a container's changes
+		 exec    Run a command in a running container
+		 run     Run a command in a new container
+		 stop    Stop one or more running containers
+		 ...
+		 </code>
+										</pre>
+						</div>
+					</div>
+
+				</section>
+
+				<section >
+
+					<h3>Commande « container run »</h3>
+
+					<pre><code>docker container run &lt;options&gt; &lt;image[:TAG]&gt; [command]</code></pre>
+					<ul>
+						<li>options : différentes options pour configurer le conteneur</li>
+						<li>image : nom de l’image à exécuter (tag : version spécifique)</li>
+						<li>command : commande à exécuter une fois le conteneur UP</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Example : Extranet Server</h3>
+
+					<div>
+						<div>
+							<pre style="box-shadow: none; border: 0;">
+											<code class="batch">C:\Docker\ExtranetServer> docker run -p 9876:80 extranetserver
+		AH00558: apache2: Could not reliably determine the server's 
+		fully qualified domain name, using 172.17.0.3. Set the 'ServerName' 
+		directive globally to suppress this message
+		AH00558: apache2: Could not reliably determine the server's 
+		fully qualified domain name, using 172.17.0.3. Set the 'ServerName' 
+		directive globally to suppress this message
+		[mpm_prefork:notice] [pid 1] AH001: Apache/2.4.10 (Debian) PHP/7.0.27
+		[core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'</code>
+										</pre>
+						</div>
+					</div>
+
+					<img style="box-shadow: none; border: 3px solid #828282;" src="images/forbidden.jpg" />
+
+				</section>
+
+			</section>
+
+			<section >
+
+				<section >
+
+					<h1 id="keywords-1">Volumes</h1>
+
+					<p>Semblable à un « mount » ...</p>
+
+					<ul>
+						<li>Partage avec la machine hôte (
+							<i>Host volume</i>)</li>
+						<li>En interne pour Docker (
+							<i>Named volume</i>)</li>
+						<li>En interne pour le conteneur (
+							<i>Anonymous volume</i>)</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3 id="keywords-1">Volumes</h3>
+
+					<p class="q-txt-left">Utilité pour un
+						<b>Dev</b>
+					</p>
+					<ul class="q-ul-width100">
+						<li>Hot replace</li>
+					</ul>
+					<p class="q-txt-left">Utilité pour un
+						<b>Ops</b>
+					</p>
+					<ul class="q-ul-width100">
+						<li>Environnement</li>
+						<li>Données persistées, Logs</li>
+					</ul>
+					<p class="q-txt-left">
+						<span style="color: red;">/!\</span> PRODUCTION
+						<span style="color: red;">/!\</span>
+					</p>
+					<ul class="q-ul-width100">
+						<li>Une image doit embarquer un livrable (via COPY)</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Volume partagé</h3>
+					<p>
+						<img style="box-shadow: none; border: 3px solid #828282;" src="images/shared-volume.jpg" />
+					</p>
+
+				</section>
+
+				<section >
+
+					<h3>Example : Extranet Server</h3>
+
+					<div>
+						<div>
+							<pre style="box-shadow: none; border: 0;">
+											<code class="batch">C:\Docker\ExtranetServer> 
+		docker run -v c:\Docker\ExtranetServer\src\:/var/www/html 
+		-p 9876:80 extranetserver
+		[Fri Jan 26 10:28:52.9876 2018] [mpm_prefork:notice] [pid 1] AH00163: 
+		Apache/2.4.10 (Debian) PHP/7.0.27 configured -- resuming normal 
+		operations
+		[core:notice] [pid 1] AH0094: Command line: 'apache2 -D FOREGROUND'</code>
+										</pre>
+						</div>
+					</div>
+
+					<img style="box-shadow: none; border: 3px solid #828282;" src="images/data_controller.jpg" />
+
+				</section>
+
+			</section>
+
+			<section >
+
+				<section >
+
+					<h1 id="keywords-1" style="font-size: 115px;">Docker-Compose</h1>
+
+					<ul>
+
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Spécificités</h3>
+
+					<ul>
+						<li>Simplifie la gestion d’une application multi-conteneurs</li>
+						<li>Communique avec le démon docker</li>
+						<li>Gère les images, les volumes, le nombre de conteneurs, les liens, ...</li>
+						<li>Définition dans un seul fichier de plusieurs conteneurs</li>
+						<ul>
+							<li>docker-compose.yml</li>
+							<li>format YAML
+								<span style="color: red;">/!\</span>
+								<i>espaces</i>
+								<span style="color: red;">/!\</span>
+							</li>
+						</ul>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Example : Intranet (Front & Back)</h3>
+					<br />
+					<pre><code class="yaml">version: '2'
+		services:
+		  frontend:
+			  image: php:7.0-apache
+			  volumes:
+			  - "./IntranetClient_Jordan/src/:/var/www/html"
+			  ports:
+			  - "8080:80"
+		  backend:
+			  image: extranetserver
+			  volumes:
+			  - "./ExtranetServer/src/:/var/www/html"
+			  ports:
+			  - "9876:80"</code></pre>
+
+				</section>
+
+				<section >
+
+
+
+					<div>
+						<div>
+							<pre style="box-shadow: none; border: 0;">
+											<code class="batch">C:\Docker\DockerCompose\NouvelIntranet> docker-compose up
+		Starting both_frontend_1 ...
+		Starting both_frontend_1 ... done
+		Attaching to both_backend_1, both_frontend_1
+		backend_1   | [Fri Jan 26 10:52:38.699876 2018] [mpm_prefork:notice] 
+		[pid 1] AH00163: Apache/2.4.10 (Debian) PHP/7.0.27 configured 
+		-- resuming normal operations
+		backend_1   | [Fri Jan 26 10:52:38.699911 2018] [core:notice] 
+		[pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+		frontend_1  | [Fri Jan 26 10:52:38.890843 2018] [mpm_prefork:notice] 
+		[pid 1] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured 
+		-- resuming normal operations
+		frontend_1  | [Fri Jan 26 10:52:38.891357 2018] [core:notice] 
+		[pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'</code>
+										</pre>
+						</div>
+					</div>
+
+				</section>
+
+			</section>
+
+			<section >
+
+				<section >
+
+					<h1 id="keywords-1" style="font-size: 130px;">Orchestration</h1>
+					<br />
+					<ul>
+						<li>Swarm (
+							<i>Docker Inc</i>)</li>
+						<li>Kubernetes (
+							<i>Google</i>)</li>
+						<li>Mesos (
+							<i>Apache</i>)</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>Spécificités</h3>
+
+					<p class="q-txt-left">
+						<span style="color: red;">/!\</span>
+						<b>Nécessaire pour la PRODUCTION</b>
+						<span style="color: red;">/!\</span>
+					</p>
+					<ul>
+						<li>Répartition de charges</li>
+						<li>Scalabilité verticale et horizontale (manuelle / dynamique)</li>
+						<li>Fail-over</li>
+						<li>Gestion des noeuds, des données, des logs, etc.</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<p>Pour plus de détail, demander à Guiliano ;)</p>
+
+				</section>
+
+			</section>
+
+			<section >
+
+				<section >
+
+					<h1 id="keywords-1">Anti-Pattern</h1>
+
+					<p class="q-txt-left">Bonnes pratiques</p>
+					<ul>
+						<li>Similaire à l’agilité, s’adapte en fonction du besoin</li>
+						<li>Il n’y a pas de manière exacte pour faire les choses !</li>
+					</ul>
+
+				</section>
+
+				<section >
+
+					<h3>
+						<b>MAIS</b> plusieurs manières de mal faire les choses ! ! !</h3>
+					<ul>
+						<li>Ne jamais utiliser le tag « latest »</li>
+						<li>Ne jamais utiliser l’option « -P » pour lancer un conteneur</li>
+						<li>Ne pas garder de données ou de logs sur les conteneurs</li>
+						<li>Eviter le « docker commit »</li>
+						<li>Un conteneur, plusieurs services</li>
+					</ul>
+
+				</section>
+
+			</section>
+
+			<section>
+				<section >
+
+					<h1 id="keywords-2">Conclusion</h1>
+
+					<p>Mes expériences</p>
+				</section>
+
+				<section >
+
+					<p>
+						<img style="box-shadow: none; border: 3px solid #828282;" src="images/docker_logo_3.jpg" />
+					</p>
+					<p>La baleine et ses conteneurs dans l'océan déchainé</p>
+					<br />
+
+				</section>
+			</section>
+
+			<section >
+
+				<h1 id="keywords-2">Questions / Réponses</h1>
+
+				<p>Merci !</p>
+
+			</section>
+
+			<section >
+
+				<h1 id="keywords-2">Démo</h1>
+
+			</section>
 			</div>
-		</div>
+			</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+			<script src="lib/js/head.min.js"></script>
+			<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+			<script>
+				// More info about config & dependencies:
+				// - https://github.com/hakimel/reveal.js#configuration
+				// - https://github.com/hakimel/reveal.js#dependencies
+				Reveal.initialize({
+					dependencies: [
+						{ src: 'plugin/markdown/marked.js' },
+						{ src: 'plugin/markdown/markdown.js' },
+						{ src: 'plugin/notes/notes.js', async: true },
+						{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+					]
+				});
+			</script>
+</body>
+
 </html>
