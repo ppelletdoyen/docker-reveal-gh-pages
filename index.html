@@ -151,19 +151,19 @@
 						<div>
 							<pre style="box-shadow: none; border: 0;">
 											<code class="makefile">C:\> docker image
-		Usage:  docker image COMMAND
-		Manage images
-		Options:
-		Commands:
-		 build   Build an image from a Dockerfile
-		 history Show the history of an image
-		 load    Load an image from a tar archive or STDIN
-		 ls      List images
-		 pull    Pull an image or a repository from a registry
-		 push    Push an image or a repository to a registry
-		 rm      Remove one or more images
-		 save    Save one or more images to a tar archive
-		...</code>
+Usage:  docker image COMMAND
+Manage images
+Options:
+Commands:
+  build   Build an image from a Dockerfile
+  history Show the history of an image
+  load    Load an image from a tar archive or STDIN
+  ls      List images
+  pull    Pull an image or a repository from a registry
+  push    Push an image or a repository to a registry
+  rm      Remove one or more images
+  save    Save one or more images to a tar archive
+  ...</code>
 										</pre>
 						</div>
 					</div>
@@ -231,15 +231,15 @@
 						<div>
 							<pre style="box-shadow: none; border: 0;">
 											<code class="shell"># Utilisation d'une image comme couche de base
-		FROM php:7.0-apache
+FROM php:7.0-apache
 		
-		# Déclaration du répertoire de travail
-		WORKDIR /var/www/html
+# Déclaration du répertoire de travail
+WORKDIR /var/www/html
 		
-		# Installation des dépendances nécessaires
-		RUN docker-php-ext-install mysqli
-		RUN docker-php-ext-enable mysqli</code>
-										</pre>
+# Installation des dépendances nécessaires
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-enable mysqli</code>
+							</pre>
 						</div>
 					</div>
 
@@ -251,21 +251,21 @@
 						<div>
 							<pre style="box-shadow: none; border: 0;">
 											<code class="makefile">C:\Docker\ExtranetServer> docker image build -t extranetserver .
-		Sending build context to Docker daemon  3.735MB
-		Step 1/4 : FROM php:7.0-apache
-		 ---> c7db7ef72210
-		Step 2/4 : WORKDIR /var/www/html
-		 ---> Using cache
-		 ---> d17b85bc1264
-		Step 3/4 : RUN docker-php-ext-install mysqli
-		 ---> Using cache
-		 ---> 71169e546436
-		Step 4/4 : RUN docker-php-ext-enable mysqli
-		 ---> Using cache
-		 ---> 604672dcec23
-		Successfully built 604672dcec23
-		Successfully tagged extranetserver:latest</code>
-										</pre>
+Sending build context to Docker daemon  3.735MB
+Step 1/4 : FROM php:7.0-apache
+---> c7db7ef72210
+Step 2/4 : WORKDIR /var/www/html
+---> Using cache
+---> d17b85bc1264
+Step 3/4 : RUN docker-php-ext-install mysqli
+---> Using cache
+---> 71169e546436
+Step 4/4 : RUN docker-php-ext-enable mysqli
+---> Using cache
+---> 604672dcec23
+Successfully built 604672dcec23
+Successfully tagged extranetserver:latest</code>
+							</pre>
 						</div>
 					</div>
 
@@ -410,17 +410,17 @@
 						<div>
 							<pre style="box-shadow: none; border: 0;">
 											<code class="makefile">C:\> docker container
-		Usage:  docker container COMMAND
-		Manage containers
-		Options:
-		Commands:
-		 commit  Create a new image from a container's changes
-		 exec    Run a command in a running container
-		 run     Run a command in a new container
-		 stop    Stop one or more running containers
-		 ...
+Usage:  docker container COMMAND
+Manage containers
+Options:
+Commands:
+  commit  Create a new image from a container's changes
+  exec    Run a command in a running container
+  run     Run a command in a new container
+  stop    Stop one or more running containers
+  ...
 		 </code>
-										</pre>
+							</pre>
 						</div>
 					</div>
 
@@ -447,15 +447,17 @@
 						<div>
 							<pre style="box-shadow: none; border: 0;">
 											<code class="batch">C:\Docker\ExtranetServer> docker run -p 9876:80 extranetserver
-		AH00558: apache2: Could not reliably determine the server's 
-		fully qualified domain name, using 172.17.0.3. Set the 'ServerName' 
-		directive globally to suppress this message
-		AH00558: apache2: Could not reliably determine the server's 
-		fully qualified domain name, using 172.17.0.3. Set the 'ServerName' 
-		directive globally to suppress this message
-		[mpm_prefork:notice] [pid 1] AH001: Apache/2.4.10 (Debian) PHP/7.0.27
-		[core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'</code>
-										</pre>
+AH00558: apache2: Could not reliably determine the server's 
+fully qualified domain name, using 172.17.0.3. 
+Set the 'ServerName' directive globally to suppress message
+AH00558: apache2: Could not reliably determine the server's 
+fully qualified domain name, using 172.17.0.3. 
+Set the 'ServerName' directive globally to suppress message
+[mpm_prefork:notice] [pid 1] 
+AH001: Apache/2.4.10 (Debian) PHP/7.0.27
+[core:notice] [pid 1] AH00094: Command line: 
+'apache2 -D FOREGROUND'</code>
+							</pre>
 						</div>
 					</div>
 
@@ -528,13 +530,14 @@
 						<div>
 							<pre style="box-shadow: none; border: 0;">
 											<code class="batch">C:\Docker\ExtranetServer> 
-		docker run -v c:\Docker\ExtranetServer\src\:/var/www/html 
-		-p 9876:80 extranetserver
-		[Fri Jan 26 10:28:52.9876 2018] [mpm_prefork:notice] [pid 1] AH00163: 
-		Apache/2.4.10 (Debian) PHP/7.0.27 configured -- resuming normal 
-		operations
-		[core:notice] [pid 1] AH0094: Command line: 'apache2 -D FOREGROUND'</code>
-										</pre>
+docker run -v c:\Docker\ExtranetServer\src\:/var/www/html 
+-p 9876:80 extranetserver
+[Fri Jan 26 10:28:52.9876 2018] 
+[mpm_prefork:notice] [pid 1] AH00163: 
+Apache/2.4.10 (Debian) PHP/7.0.27 configured operations
+[core:notice] [pid 1] AH0094: 
+Command line: 'apache2 -D FOREGROUND'</code>
+							</pre>
 						</div>
 					</div>
 
@@ -582,19 +585,19 @@
 					<h3>Example : Intranet (Front & Back)</h3>
 					<br />
 					<pre><code class="yaml">version: '2'
-		services:
-		  frontend:
-			  image: php:7.0-apache
-			  volumes:
-			  - "./IntranetClient_Jordan/src/:/var/www/html"
-			  ports:
-			  - "8080:80"
-		  backend:
-			  image: extranetserver
-			  volumes:
-			  - "./ExtranetServer/src/:/var/www/html"
-			  ports:
-			  - "9876:80"</code></pre>
+services:
+  frontend:
+    image: php:7.0-apache
+	  volumes:
+	    - "./IntranetClient_Jordan/src/:/var/www/html"
+	  ports:
+		- "8080:80"
+  backend:
+	image: extranetserver
+	  volumes:
+	    - "./ExtranetServer/src/:/var/www/html"
+	  ports:
+		- "9876:80"</code></pre>
 
 				</section>
 
@@ -606,19 +609,20 @@
 						<div>
 							<pre style="box-shadow: none; border: 0;">
 											<code class="batch">C:\Docker\DockerCompose\NouvelIntranet> docker-compose up
-		Starting both_frontend_1 ...
-		Starting both_frontend_1 ... done
-		Attaching to both_backend_1, both_frontend_1
-		backend_1   | [Fri Jan 26 10:52:38.699876 2018] [mpm_prefork:notice] 
-		[pid 1] AH00163: Apache/2.4.10 (Debian) PHP/7.0.27 configured 
-		-- resuming normal operations
-		backend_1   | [Fri Jan 26 10:52:38.699911 2018] [core:notice] 
-		[pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
-		frontend_1  | [Fri Jan 26 10:52:38.890843 2018] [mpm_prefork:notice] 
-		[pid 1] AH00163: Apache/2.4.25 (Debian) PHP/7.2.1 configured 
-		-- resuming normal operations
-		frontend_1  | [Fri Jan 26 10:52:38.891357 2018] [core:notice] 
-		[pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'</code>
+Starting both_frontend_1 ...
+Starting both_frontend_1 ... done
+Attaching to both_backend_1, both_frontend_1
+backend_1   | [Fri Jan 26 10:52:38.699876 2018] 
+[mpm_prefork:notice] [pid 1] AH00163: 
+Apache/2.4.10 (Debian) PHP/7.0.27 configured
+backend_1   | [Fri Jan 26 10:52:38.699911 2018] 
+[core:notice] [pid 1] AH00094: 
+Command line: 'apache2 -D FOREGROUND'
+frontend_1  | [Fri Jan 26 10:52:38.890843 2018] 
+[mpm_prefork:notice] [pid 1] AH00163: 
+Apache/2.4.25 (Debian) PHP/7.2.1 configured 
+frontend_1  | [Fri Jan 26 10:52:38.891357 2018]
+[pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'</code>
 										</pre>
 						</div>
 					</div>
